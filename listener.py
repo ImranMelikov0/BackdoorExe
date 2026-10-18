@@ -1,3 +1,4 @@
+import shlex
 import socket
 import simplejson
 import base64
@@ -51,7 +52,7 @@ class SocketListener:
         try:
             while True:
                 command_input = input("Enter command: ")
-                command_input = command_input.split(" ")
+                command_input = shlex.split(command_input)
                 try:
                     if command_input[0] == "upload":
                         file_content = self.download_file(command_input[1])
